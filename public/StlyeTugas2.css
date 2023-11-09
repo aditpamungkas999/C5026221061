@@ -1,0 +1,5 @@
+</div>
+
+      <img src="{{asset('IndexStlye/asset/Polygon1.png')}}" style="z-index: -1; position: absolute;right: 0;top: 0;" height="100%">
+      <img src=""{{asset('IndexStyle/asset/Dark.png')}}" class="float-right" height="7.5%" style="position: absolute; top: 30px; right: 75px;">
+    </div>
