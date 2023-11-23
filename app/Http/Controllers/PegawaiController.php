@@ -76,3 +76,5 @@ class PegawaiController extends Controller
 		return redirect('/pegawai');
 	}
 }
+.
+.
