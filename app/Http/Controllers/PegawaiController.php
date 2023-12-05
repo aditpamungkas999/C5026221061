@@ -1,33 +1,35 @@
 <?php
- 
+
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
- 
- 
+
+
 class PegawaiController extends Controller
 {
 	public function index()
 	{
     	// mengambil data dari table pegawai
 		// $pegawai = DB::table('pegawai')->get();
-		$pegawai = DB::table('pegawai')->paginate(15);
-         
+        $pegawai = DB::table('pegawai')
+                    ->orderBy('pegawai_nama', 'asc')
+                    ->paginate(10);
+
     	// mengirim data pegawai ke view index
 		return view('index',['pegawai' => $pegawai]);
- 
+
 	}
- 
+
 	// method untuk menampilkan view form tambah pegawai
 	public function tambah()
 	{
- 
+
 		// memanggil view tambah
 		return view('tambah');
- 
+
 	}
- 
+
 	// method untuk insert data ke table pegawai
 	public function store(Request $request)
 	{
@@ -40,9 +42,9 @@ class PegawaiController extends Controller
 		]);
 		// alihkan halaman ke halaman pegawai
 		return redirect('/pegawai');
- 
+
 	}
- 
+
 	// method untuk edit data pegawai
 	public function edit($id)
 	{
@@ -50,9 +52,9 @@ class PegawaiController extends Controller
 		$pegawai = DB::table('pegawai')->where('pegawai_id',$id)->get();
 		// passing data pegawai yang didapat ke view edit.blade.php
 		return view('edit',['pegawai' => $pegawai]);
- 
+
 	}
- 
+
 	// update data pegawai
 	public function update(Request $request)
 	{
@@ -66,29 +68,39 @@ class PegawaiController extends Controller
 		// alihkan halaman ke halaman pegawai
 		return redirect('/pegawai');
 	}
- 
+
 	// method untuk hapus data pegawai
 	public function hapus($id)
 	{
 		// menghapus data pegawai berdasarkan id yang dipilih
 		DB::table('pegawai')->where('pegawai_id',$id)->delete();
-		
+
 		// alihkan halaman ke halaman pegawai
-		return redirect('/pegawai');		
+		return redirect('/pegawai');
 	}
 
-	public function cari(Request $request)
+    public function cari(Request $request)
 	{
 		// menangkap data pencarian
 		$cari = $request->cari;
- 
+
     		// mengambil data dari table pegawai sesuai pencarian data
 		$pegawai = DB::table('pegawai')
-		->where('pegawai_nama','like',"%".$cari."%")
-		->paginate();
- 
+		            ->where('pegawai_nama','like',"%".$cari."%")
+                    ->orderBy('pegawai_nama', 'asc')
+                    ->paginate(10);
+
     		// mengirim data pegawai ke view index
-		return view('index',['pegawai' => $pegawai,'cari'=>$cari ]);
- 
+		return view('index',['pegawai' => $pegawai, 'cari' => $cari]);
+	}
+
+    // method untuk menampilkan view form tambah pegawai
+	public function view($id)
+	{
+		// mengambil data pegawai berdasarkan id yang dipilih
+		$pegawai = DB::table('pegawai')->where('pegawai_id',$id)->first();
+		// passing data pegawai yang didapat ke view view.blade.php
+		return view('view',['pegawai' => $pegawai]);
+
 	}
 }
