@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">5026221020 Eugenia Indrawan</a>
+        <a class="navbar-brand" href="#">Aditya Aji Pamungkas - 5026221061</a>
 
         <!-- Links -->
         <ul class="navbar-nav">

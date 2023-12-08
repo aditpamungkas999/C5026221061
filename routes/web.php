@@ -110,3 +110,10 @@ Route::get('/keranjangbelanja','App\Http\Controllers\KeranjangController@index3'
 Route::get('/keranjangbelanja/beli','App\Http\Controllers\KeranjangController@beli');
 Route::post('/keranjangbelanja/store','App\Http\Controllers\KeranjangController@store');
 Route::get('/keranjangbelanja/hapus/{id}','App\Http\Controllers\KeranjangController@hapus');
+
+//Bulpoin
+Route::prefix('bolpen')->group(function () {
+    Route::get('/index', 'App\Http\Controllers\BolpenController@index');
+    Route::get('/tambah', 'App\Http\Controllers\BolpenController@tambah');
+    Route::post('/store', 'App\Http\Controllers\BolpenController@store');
+});
