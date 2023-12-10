@@ -112,8 +112,12 @@ Route::post('/keranjangbelanja/store','App\Http\Controllers\KeranjangController@
 Route::get('/keranjangbelanja/hapus/{id}','App\Http\Controllers\KeranjangController@hapus');
 
 //Bulpoin
-Route::prefix('bolpen')->group(function () {
-    Route::get('/index', 'App\Http\Controllers\BolpenController@index');
-    Route::get('/tambah', 'App\Http\Controllers\BolpenController@tambah');
-    Route::post('/store', 'App\Http\Controllers\BolpenController@store');
-});
+Route::get('/bolpen','App\Http\Controllers\BolpenController@indexbolpen');
+Route::get('/bolpen/tambah','App\Http\Controllers\BolpenController@tambahbolpen');
+Route::post('/bolpen/store','App\Http\Controllers\BolpenController@storebolpen');
+Route::get('/bolpen/edit/{id}','App\Http\Controllers\BolpenController@edit');
+Route::post('/bolpen/update','App\Http\Controllers\BolpenController@update');
+Route::get('/bolpen/hapus/{id}','App\Http\Controllers\BolpenController@hapus');
+Route::get('/bolpen/cari','App\Http\Controllers\BolpenController@cari');
+Route::get('/bolpen/view/{id}','App\Http\Controllers\BolpenController@view');
+
