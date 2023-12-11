@@ -121,3 +121,7 @@ Route::get('/bolpen/hapus/{id}','App\Http\Controllers\BolpenController@hapus');
 Route::get('/bolpen/cari','App\Http\Controllers\BolpenController@cari');
 Route::get('/bolpen/view/{id}','App\Http\Controllers\BolpenController@view');
 
+//EAS
+Route::get('/kategori','App\Http\Controllers\kategoriController@index');
+Route::post('/kategori/view','App\Http\Controllers\kategoriController@view');
+
